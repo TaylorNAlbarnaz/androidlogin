@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.newm.userlog.R;
 import com.newm.userlog.controllers.LoginController;
@@ -20,20 +21,31 @@ public class FormLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_login);
+        resetError();
     }
 
     public void onLoginClick(View v) {
         v.startAnimation(buttonClick);
-
-        LoginController loginController = LoginController.getInstance();
+        resetError();
 
         String username = ((EditText) findViewById(R.id.usernameInput)).getText().toString();
         String password = ((EditText) findViewById(R.id.passwordInput)).getText().toString();
 
+        if (username.length() < 4) {
+            setError("Insira um username válido!");
+            return;
+        }
+
+        if (password.length() < 4) {
+            setError("Insira uma senha válida!");
+            return;
+        }
+
+        LoginController loginController = LoginController.getInstance();
         if (loginController.login(username, password) != null) {
             goToMain();
         } else {
-            Log.d("LoginController", "Não foi possível logar, dados incorretos.");
+            setError("Dados incorretos!");
         }
     }
 
@@ -49,5 +61,18 @@ public class FormLogin extends AppCompatActivity {
     public void goToMain() {
         Intent goToMain = new Intent(this, UserActivity.class);
         startActivity(goToMain);
+    }
+
+    public void setError(String error) {
+        TextView errorText = findViewById(R.id.errorText);
+
+        errorText.setVisibility(View.VISIBLE);
+        errorText.setText(error);
+    }
+
+    public void resetError() {
+        TextView errorText = findViewById(R.id.errorText);
+
+        errorText.setVisibility(View.INVISIBLE);
     }
 }
