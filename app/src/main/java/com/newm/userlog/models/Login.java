@@ -13,8 +13,7 @@ public class Login {
         this.username = username;
         this.passwordHash = password.hashCode();
 
-        Log.d("loginController", "Senha passada: " + password);
-        Log.d("loginController", "Hash criado: " + this.passwordHash);
+        Log.d("loginController", "Usuário criado: " + username);
     }
 
     public String getUsername() {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="onLoginClick"
+    android:backgroundTint="#CD5151"
     tools:context=".activities.FormLogin">
 
     <ImageView
@@ -55,44 +55,20 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:onClick="goToRegister">
+                android:layout_weight="1">
 
-                <EditText
-                    android:id="@+id/usernameInput"
-                    style="@style/InputComponent"
+                <TextView
+                    android:id="@+id/usernameShow"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ems="10"
-                    android:hint="@string/username"
-                    android:inputType="text"
+                    android:backgroundTint="#FFFFFF"
+                    android:foregroundTint="#FFFFFF"
+                    android:text="Usuário Logado: "
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <EditText
-                    android:id="@+id/passwordInput"
-                    style="@style/InputComponent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:ems="10"
-                    android:hint="@string/password"
-                    android:inputType="text|textPassword"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/usernameInput" />
-
-                <Button
-                    android:id="@+id/logoffBtn"
-                    style="@style/InputComponent"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="40dp"
-                    android:onClick="onLoginClick"
-                    android:text="@string/login"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </TableRow>
 
@@ -104,19 +80,20 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:backgroundTint="#673AB7">
 
-                <TextView
-                    android:id="@+id/loginText"
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/logoffBtn"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:onClick="onGotoRegisterClick"
-                    android:text="Ainda não possui uma conta? Inscreva-se!"
-                    android:textColor="@color/white"
+                    android:layout_marginBottom="52dp"
+                    android:backgroundTint="#F44336"
+                    android:onClick="onLogOffClick"
+                    android:text="@string/logoff"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </TableRow>
 

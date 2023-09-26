@@ -2,6 +2,7 @@ package com.newm.userlog.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,10 +20,6 @@ public class FormLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_login);
-
-        LoginController loginController = LoginController.getInstance();
-
-        loginController.createUser("teste", "123");
     }
 
     public void onLoginClick(View v) {
@@ -33,6 +30,24 @@ public class FormLogin extends AppCompatActivity {
         String username = ((EditText) findViewById(R.id.usernameInput)).getText().toString();
         String password = ((EditText) findViewById(R.id.passwordInput)).getText().toString();
 
-        Log.d("LoginController", loginController.login(username, password) != null ? "logado!" : "dados incorretos!");
+        if (loginController.login(username, password) != null) {
+            goToMain();
+        } else {
+            Log.d("LoginController", "Não foi possível logar, dados incorretos.");
+        }
+    }
+
+    public void onGotoRegisterClick(View v) {
+        goToRegister();
+    }
+
+    public void goToRegister() {
+        Intent goToRegister = new Intent(this, FormRegister.class);
+        startActivity(goToRegister);
+    }
+
+    public void goToMain() {
+        Intent goToMain = new Intent(this, UserActivity.class);
+        startActivity(goToMain);
     }
 }
